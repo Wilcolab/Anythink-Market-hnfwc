@@ -31,7 +31,6 @@ const reducer = (state = {}, action) => {
         }),
       };
     case UPDATE_TITLE_SEARCH_TERM:
-      // TODO: config reducer
       return {
         ...state,
         titleSearchTerm: action.payload.titleSearchTerm,

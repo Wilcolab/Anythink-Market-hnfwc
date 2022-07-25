@@ -8,7 +8,10 @@ const Banner = (props) => {
   const onChangeHandler = (event) => {
     event.preventDefault();
     const { value } = event.target;
-    props.onChange({ titleSearchTerm: value });
+    props.dispatch({
+      type: UPDATE_TITLE_SEARCH_TERM,
+      payload: { titleSearchTerm: value },
+    });
   };
 
   return (
@@ -27,7 +30,6 @@ const Banner = (props) => {
                 type="search"
                 placeholder="What is it that you truly desire?"
                 onChange={onChangeHandler}
-                value={props.titleSearchTerm}
               />
             </fieldset>
           </form>
@@ -38,13 +40,4 @@ const Banner = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  titleSearchTerm: state.itemList.titleSearchTerm,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onChange: (payload) => dispatch({ type: UPDATE_TITLE_SEARCH_TERM, payload }),
-});
-
-// export default Banner;
-export default connect(mapStateToProps, mapDispatchToProps)(Banner);
+export default connect()(Banner);
