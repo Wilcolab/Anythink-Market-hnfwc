@@ -1,6 +1,7 @@
 import ItemPreview from "./ItemPreview";
 import ListPagination from "./ListPagination";
 import React from "react";
+import { ReactComponent as SvgFaceSadTear } from "../imgs/face-sad-tear.svg";
 
 const ItemList = (props) => {
   let items = props.items;
@@ -9,7 +10,10 @@ const ItemList = (props) => {
     return <div className="py-4">Loading...</div>;
   }
 
-  if (props.items.length === 0) {
+  if (
+    props.items.length === 0 &&
+    (!props.titleSearchTerm || props.titleSearchTerm.length < 3)
+  ) {
     return <div className="py-4 no-items">No items are here... yet.</div>;
   }
 
@@ -19,6 +23,27 @@ const ItemList = (props) => {
         .toLowerCase()
         .includes(props.titleSearchTerm.toLowerCase().trim())
     );
+
+    if (items.length === 0) {
+      return (
+        <div
+          id="empty"
+          className="w-75 mx-auto my-4 py-4 text-center"
+          style={{ backgroundColor: "hsla(100, 100%, 100%, .1)" }}
+        >
+          <p>
+            <SvgFaceSadTear
+              width="50"
+              fill="currentColor"
+              title="Face with sad tear"
+            />
+          </p>
+          <p className="mb-0">
+            No items found for <strong>"{props.titleSearchTerm}"</strong>.
+          </p>
+        </div>
+      );
+    }
   }
 
   return (
