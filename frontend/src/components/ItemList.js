@@ -29,7 +29,11 @@ const ItemList = (props) => {
           style={{ backgroundColor: "hsla(100, 100%, 100%, .1)" }}
         >
           <p>
-            <SvgFaceSadTear width="50" fill="currentColor" />
+            <SvgFaceSadTear
+              width="50"
+              fill="currentColor"
+              title="Face with sad tear"
+            />
           </p>
           <p className="mb-0">
             No items found for <strong>"{props.titleSearchTerm}"</strong>.
