@@ -178,3 +178,4 @@ jobs:
           clientId: ${{ secrets.ARMORY_CLIENT_ID }}
           clientSecret: ${{ secrets.ARMORY_CLIENT_SECRET }}
           path-to-file: /armory-deploy.yml
+
