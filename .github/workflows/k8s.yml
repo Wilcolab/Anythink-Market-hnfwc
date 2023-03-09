@@ -2,7 +2,7 @@ name: Build and deploy to Kubernetes
 on:
   push:
     branches:
-      - "*"
+      - "**"
       
 concurrency:
   group: k8s
