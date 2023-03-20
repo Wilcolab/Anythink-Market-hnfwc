@@ -11,7 +11,7 @@ jobs:
           command: cd frontend && yarn install
       - run:
           name: Run tests
-          command: yarn test
+          command: cd frontend && yarn test
 
 workflows:
   build-and-test:
