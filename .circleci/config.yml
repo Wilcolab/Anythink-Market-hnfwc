@@ -4,7 +4,7 @@ jobs:
   build-and-test:
     docker:
       - image: cimg/node:16.18
-    working_directory: ~/project/frontend
+    working_directory: frontend
     steps:
       - checkout
       # look for existing cache and restore if found; otherwise, use fallback
@@ -15,7 +15,9 @@ jobs:
       # install dependencies
       - run:
           name: Install deps
-          command: yarn install
+          command: |
+            pwd
+            yarn install 
       # save any changes to the cache
       - save_cache:
           key: v1-deps-{{ checksum "yarn.lock" }}
