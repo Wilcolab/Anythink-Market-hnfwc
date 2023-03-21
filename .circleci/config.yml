@@ -4,14 +4,27 @@ jobs:
   build-and-test:
     docker:
       - image: cimg/node:16.18
+    working_directory: ~/Anythink-Market-hnfwc/frontend
     steps:
       - checkout
+      # look for existing cache and restore if found; otherwise, use fallback
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "yarn.lock" }}
+            - v1-deps-
+      # install dependencies
       - run:
           name: Install deps
-          command: cd frontend && yarn install
+          command: yarn install
+      # save any changes to the cache
+      - save_cache:
+          key: v1-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      # run test suite
       - run:
           name: Run tests
-          command: cd frontend && yarn test
+          command: yarn test
 
 workflows:
   build-and-test:
