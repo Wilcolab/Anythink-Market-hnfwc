@@ -23,7 +23,7 @@ const getMiddleware = () => {
     return applyMiddleware(
       myRouterMiddleware,
       promiseMiddleware,
-      localStorageMiddleware,
+      localStorageMiddleware
     );
   }
 };

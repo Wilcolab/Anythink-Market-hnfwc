@@ -51,10 +51,7 @@ const App = (props) => {
   if (props.appLoaded) {
     return (
       <div>
-        <Header
-          appName={props.appName}
-          currentUser={props.currentUser}
-        />
+        <Header appName={props.appName} currentUser={props.currentUser} />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
@@ -71,12 +68,9 @@ const App = (props) => {
   }
   return (
     <div>
-      <Header
-        appName={props.appName}
-        currentUser={props.currentUser}
-      />
+      <Header appName={props.appName} currentUser={props.currentUser} />
     </div>
   );
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

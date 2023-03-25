@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
   onUnload: () => dispatch({ type: HOME_PAGE_UNLOADED }),
 });
 
-const Home = ({onLoad, onUnload, tags, onClickTag}) => {
+const Home = ({ onLoad, onUnload, tags, onClickTag }) => {
   const tab = "all";
   const itemsPromise = agent.Items.all;
 
@@ -39,16 +39,16 @@ const Home = ({onLoad, onUnload, tags, onClickTag}) => {
     return onUnload;
   }, [onLoad, onUnload, tab, itemsPromise]);
 
-    return (
-      <div className="home-page">
-        <Banner />
+  return (
+    <div className="home-page">
+      <Banner />
 
-        <div className="container page">
-          <Tags tags={tags} onClickTag={onClickTag} />
-          <MainView />
-        </div>
+      <div className="container page">
+        <Tags tags={tags} onClickTag={onClickTag} />
+        <MainView />
       </div>
-    );
-}
+    </div>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
