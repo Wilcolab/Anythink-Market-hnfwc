@@ -17,25 +17,19 @@ const SettingsForm = ({ currentUser, onSubmitForm }) => {
     }
   }, [currentUser]);
 
-  const updateState = useCallback(
-    (field) => (ev) => {
-      const newState = Object.assign({}, user, { [field]: ev.target.value });
-      setUser(newState);
-    },
-    [user]
-  );
+  const updateState = useCallback((field) => (ev) => {
+    const newState = Object.assign({}, user, { [field]: ev.target.value });
+    setUser(newState);
+  }, [user]);
 
-  const submitForm = useCallback(
-    (ev) => {
-      ev.preventDefault();
-      const userToSubmit = { ...user };
-      if (!userToSubmit.password) {
-        delete userToSubmit.password;
-      }
-      onSubmitForm(userToSubmit);
-    },
-    [user, onSubmitForm]
-  );
+  const submitForm = useCallback((ev) => {
+    ev.preventDefault();
+    const userToSubmit = { ...user };
+    if (!userToSubmit.password) {
+      delete userToSubmit.password;
+    }
+    onSubmitForm(userToSubmit);
+  }, [user, onSubmitForm]);
 
   return (
     <form onSubmit={submitForm}>
@@ -90,13 +84,16 @@ const SettingsForm = ({ currentUser, onSubmitForm }) => {
           />
         </fieldset>
 
-        <button className="btn btn-lg btn-primary pull-xs-right" type="submit">
+        <button
+          className="btn btn-lg btn-primary pull-xs-right"
+          type="submit"
+        >
           Update Settings
         </button>
       </fieldset>
     </form>
   );
-};
+}
 
 const mapStateToProps = (state) => ({
   ...state.settings,
